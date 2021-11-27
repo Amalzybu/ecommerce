@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Ecommerce site</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -47,8 +49,8 @@
                                 href="my-profile.html">My Saved Cards</a>
                             <div class="dropdown-divider"></div><a class="dropdown-item" href="my-profile.html">Edit Profile</a><a class="dropdown-item text-danger" href="#">Log Out</a></div>
                     </li>
-                    <li class="nav-item"><a class="nav-link text-center" href="check-out.html"><i class="fa fa-bookmark-o" style="font-size: 18px;"></i><br></a></li>
-                    <li class="nav-item"><a class="nav-link text-center" href="check-out.html"><i class="icon-bag" style="font-size: 18px;"></i><br></a></li>
+                    <li class="nav-item"><a class="nav-link text-center" href="/checkout"><i class="fa fa-bookmark-o" style="font-size: 18px;"></i><br></a></li>
+                    <li class="nav-item"><a class="nav-link text-center" href="/checkout"><i class="icon-bag" style="font-size: 18px;"></i><br></a></li>
                 </ul>
         </div>
         </div>
@@ -58,7 +60,7 @@
             <div class="container">
                 <form>
                     <div class="form-group">
-                        <div class="input-group"><input class="form-control" type="search" placeholder="What are you looking for?">
+                        <div class="input-group"><input class="form-control" type="search" placeholder="<%=placeholder%>">
                             <div class="input-group-append"><button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button></div>
                         </div>
                     </div>
@@ -84,6 +86,8 @@
     </div>
     <section>
         <div class="mt-5">
+            <div id="app">
+            </div>
             <div class="container">
                 <div class="col">
                     <h3>Top Products</h3>
@@ -298,6 +302,7 @@
         </footer>
         <div class="text-center"><a class="text-secondary" href="http://www.freepik.com" target="_blank">Logo designed by Designertale</a></div>
     </div>
+    <script src="javascripts/app.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
