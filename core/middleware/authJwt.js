@@ -4,7 +4,9 @@ const db = require("../../models");
 const User = db.User;
 
 verifyToken = (req, res, next) => {
-  let token = req.headers["x-access-token"];
+  // let token = req.headers["x-access-token"];
+  let authheader = req.headers["authorization"];
+  let token = authheader && authheader.split(' ')[1]
 
   if (!token) {
     return res.status(403).send({
