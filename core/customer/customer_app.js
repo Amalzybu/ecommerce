@@ -79,7 +79,7 @@ checkoutCart:async (req, res) => {
     })
     
     order =await Orders.create({
-              user_id: 1,
+              user_id: req.query.id,
               total: total,
               city: req.body.city,
               district: req.body.district,

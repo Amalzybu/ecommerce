@@ -5,6 +5,7 @@ const User = db.User;
 
 verifyToken = (req, res, next) => {
   // let token = req.headers["x-access-token"];
+  
   let authheader = req.headers["authorization"];
   let token = authheader && authheader.split(' ')[1]
 
