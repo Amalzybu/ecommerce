@@ -15,9 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(OrderItems, { foreignKey: 'item_id' })
     }
 
-    toJSON() {
-      return { ...this.get(), id: undefined }
-    }
+  
   }
   Products.init(
     {

@@ -57,7 +57,7 @@ checkoutCart:async (req, res) => {
     data=req.body.data
     let arr = [];
 
-    arr=data.map(({id, count})=>(id))
+    arr=data.map(({id, quantity})=>(id))
 
     let products=await Products.findAll({
       where:{
@@ -70,10 +70,10 @@ checkoutCart:async (req, res) => {
     items= await products.map((element)=>{
       var filtered =  data.find(a => a.id === element.id);
       var p ={}
-      p.quantity=filtered.count
+      p.quantity=filtered.quantity
       p.price=element.price
       p.item_id=element.id
-      total+=element.price*filtered.count
+      total+=element.price*filtered.quantity
       return p;
      
     })
