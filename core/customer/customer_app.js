@@ -68,7 +68,7 @@ checkoutCart:async (req, res) => {
 
     total=0
     items= await products.map((element)=>{
-      var filtered =  data.filter(a => a.id == element.id)[0];
+      var filtered =  data.find(a => a.id === element.id);
       var p ={}
       p.quantity=filtered.count
       p.price=element.price

@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./core/products/product_routes')
 var customersRouter = require('./core/customer/customer_routes')
+var cors = require('cors')
 
 var app = express();
 
@@ -17,7 +18,24 @@ app.set('views', path.join(__dirname, 'views'));
 
 // app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+app.use(function (req, res, next) {
 
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
