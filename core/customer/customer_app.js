@@ -13,7 +13,16 @@ allOrders:async (req, res) => {
         where:{
           id: req.userId
         },
-        include: 'orders',
+        include: [
+          {
+             model: Orders,
+             include: [{
+                model: OrderItems,
+                required: true
+              }]
+          }
+        ],
+        
       })
   
       return res.json({"status":200,"message":"items fetched successfully","data":products})
@@ -79,7 +88,7 @@ checkoutCart:async (req, res) => {
     })
     
     order =await Orders.create({
-              user_id: req.query.id,
+              user_id: req.body.user_id,
               total: total,
               city: req.body.city,
               district: req.body.district,

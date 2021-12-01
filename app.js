@@ -16,8 +16,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
 
-// app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
