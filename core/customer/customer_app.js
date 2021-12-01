@@ -9,16 +9,22 @@ module.exports = {
 
 allOrders:async (req, res) => {
     try {
-      const products = await User.findOne({
+      const products = await Orders.findAll({
         where:{
-          id: req.userId
+          user_id:req.userId,
         },
-        include: 'orders'
-         
-        
+        include:[
+          {
+             model: OrderItems,
+             include: [{
+                model: Products,
+                required: true
+              }]
+          }
+        ]
       })
   
-      return res.json({"status":200,"message":"items fetched successfully","data":products})
+      return res.json({"status":200,'user_id':req.userId,"message":"items fetched successfully","data":products})
     } catch (err) {
       console.log(err)
       return res.status(500).json({ error: 'Something went wrong' })
@@ -81,7 +87,7 @@ checkoutCart:async (req, res) => {
     })
     
     order =await Orders.create({
-              user_id: req.body.user_id,
+              user_id: req.userId,
               total: total,
               city: req.body.city,
               district: req.body.district,
