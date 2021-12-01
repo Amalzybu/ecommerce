@@ -13,15 +13,8 @@ allOrders:async (req, res) => {
         where:{
           id: req.userId
         },
-        include: [
-          {
-             model: Orders,
-             include: [{
-                model: OrderItems,
-                required: true
-              }]
-          }
-        ],
+        include: 'orders'
+         
         
       })
   
